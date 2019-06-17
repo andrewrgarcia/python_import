@@ -9,29 +9,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def data( filename = 'name' ):
-    
-    
+def conv( filename = 'name' ):
+
+
     '''if the csv file is in a subfolder to this script's, specify path'''
     fname_path='data/'
-    
+
     with open(fname_path+filename, 'r') as f:
-        X = list(csv.reader(f, delimiter=","))        
-    Xc=np.array(X[1:], dtype=np.float)        
+        X = list(csv.reader(f, delimiter=","))
+    Xc=np.array(X[1:], dtype=np.float)
 
     x=Xc[:,0]
     y=Xc[:,1]
-    
+
 #    return Xc
     return x,y
 
+'''.csv files in data folder'''
+
+file1,label1='example1.csv','Example 1'
+file2,label2='example2.csv','Example 2'
 
 
-x,y = data('33as.csv')
-plt.plot(-x,y,'k',label = 'MIL-53-33as')
+'Read & Plot'
+x,y = conv(file1)
+plt.plot(x,y,'k',label = label1)
 
-x,y = data('33sc.csv')
-plt.plot(-x,y,label = 'MIL-53-33sc')
+x,y = conv(file2)
+plt.plot(x,y,label = label2)
 plt.legend()
-
-

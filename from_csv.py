@@ -8,6 +8,10 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
+'''.csv files in data folder'''
+filename1,label1='example1.csv','Example 1'
+filename2,label2='example2.csv','Example 2'
+
 
 def conv( filename = 'name' ):
 
@@ -25,16 +29,11 @@ def conv( filename = 'name' ):
 #    return Xc
     return x,y
 
-'''.csv files in data folder'''
-
-file1,label1='example1.csv','Example 1'
-file2,label2='example2.csv','Example 2'
-
 
 'Read & Plot'
-x,y = conv(file1)
+x,y = conv(filename1)
 plt.plot(x,y,'k',label = label1)
 
-x,y = conv(file2)
+x,y = conv(filename2)
 plt.plot(x,y,label = label2)
 plt.legend()

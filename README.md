@@ -11,9 +11,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 
 ## from_csv.py
-Pass / read .csv files with Python
+Pass / read .csv files in *\data* folder with Python.
 
 ## from_spss.py
-Read SPSS .sav files with Python and convert to .csv output.
+Read SPSS .sav files in *\data* folder with Python and convert to .csv output.
 #### experim.sav
 Source: http://spss.allenandunwin.com.s3-website-ap-southeast-2.amazonaws.com/data-files.html#.XQgRMIhKhzo

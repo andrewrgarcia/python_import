@@ -44,16 +44,34 @@ def readfile(path):
     asps = []
     for root, dirs, files in os.walk(path):
         for file in files:
-            asps.append(file)
+            if not file.endswith('.xlsx') and not file.endswith('.csv')\
+            and not file.endswith('.png') and not file.endswith('.txt')\
+            and not file.endswith('.xls'):
+                asps.append(file)
     
+    'conditional (quick fix for fwf number-cutting problem):'
+    def num_cut_sol(var,c_num):
+        cut_num = c_num
+        i,k = 0,-1
+        while i < xdim:
+            if df[var][i]%cut_num == 0.0:
+                k+=1
+            df[var][i]+=k*cut_num
+            i+=1
+            
     print(asps)
     
     for file in asps:
-        
         df= pandas.read_fwf(path+file,header=None)
-        if df.shape[0] > 1 and df.shape[1] == 2:
-            df.columns =['a', 'b'] 
+        xdim, ydim = df.shape[0], df.shape[1]
+        
+        if xdim > 1 and ydim == 2:
+            df.columns =['a','b'] 
+            num_cut_sol('a',100)
+#            num_cut_sol('b',100)
+            '----------------------------------------'
             
+            print(file)
             print(df)
             plt.figure()
     #        plt.plot(df[0],df[1])   
@@ -62,7 +80,7 @@ def readfile(path):
             plt.xlabel('time  /  ps')
             plt.savefig(file+'.png')
 #            plt.close()
-#    return df
+#            return df
 
 
 def readxl(path,file):

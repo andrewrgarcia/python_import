@@ -78,17 +78,17 @@ def readxl(path,file):
     plt.savefig(file+'.png')
 
 
-'''v SPECIFY FILE'S PATH HERE v'''
-path = r'C:\Users\***\file_folder/'
 #from proc_out_key import pathkey
 #path = pathkey()
 
 
 '''Process ALL tab-separated files in folder PATH (above) with two columns
 (must be in a folder with tab-delimited files ONLY)'''
+path = r'C:\Users\***\file_folder/'
 readfile(path)
     
 
 '''OR Process an Excel file(s) (specify the file name(s)) '''
+path = r'C:\Users\***\file_folder/'
 file = '*.xlsx'
 readxl(path,file)

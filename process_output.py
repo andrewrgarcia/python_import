@@ -51,13 +51,9 @@ def readxl(path,file):
     plt.title(file[:-5])
     plt.xlabel('time  /  ps')
     plt.savefig(file+'.png')
-    
-
-#from proc_out_key import pathkey
-#path = pathkey()
-    
+      
 
 '''SPECIFIC EXCEL FILE '''
 path = r'C:\Users\***\file_folder/'
 file = '*.xlsx'
-#readxl(path,file)
+readxl(path,file)

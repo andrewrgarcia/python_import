@@ -108,14 +108,14 @@ def writetab_bulk(path):
 #            return df
   
 '(optional): create function with directory path (keep uncommented if unaware)'
-from proc_out_key import pathkey
-path = pathkey()  
+#from proc_out_key import pathkey
+#path = pathkey()  
 
 
 '''COMMAND SECTION (INPUT)'''
 
 'MAKE XY PLOTS FOR ALL TAB DELIMITED FILES IN A FOLDER (SPECIFY FOLDER PATH)'
-#path = r'C:\Users\***\file_folder/'
+path = r'C:\Users\***\file_folder/'
 df=writetab_bulk(path)
 
 '''MAKE AN XY PLOT FOR A SINGLE EXCEL FILE (SPECIFY FOLDER PATH AND FILE NAME)'''

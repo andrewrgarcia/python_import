@@ -19,3 +19,10 @@ Reads .csv files in ***\data*** folder with Python.
 Reads SPSS .sav files in ***\data*** folder with Python and convert to .csv output.
 #### experim.sav
 Source: http://spss.allenandunwin.com.s3-website-ap-southeast-2.amazonaws.com/data-files.html#.XQgRMIhKhzo
+
+
+## process_output.py
+Process: reads files with two columns and makes xy plots thereof
+Capabilities
+- [x] Process individual Excel files (def writexl)
+- [x] Bulk processing: All tab delimited files in a certain folder  (def writetab_bulk)

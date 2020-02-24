@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--path", 
-                default = r'C:\Users\garci\DROPBO~1\Research\_Shared-Undergraduate-Files\Copper_Sulfate_Cycling_Growth\data\2.12\CalibrationMeasurements/',
+                default = r'C:\Users\garci\...\folder/',
                 type = str, help="path to csv files")
 ap.add_argument("-r", "--reference_column", 
                 default = "Wavelength",

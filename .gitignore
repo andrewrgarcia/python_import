@@ -4,3 +4,4 @@
 
 proc_out_key.py
 *.png
+extract_uv.py

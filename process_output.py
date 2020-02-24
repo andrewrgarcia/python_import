@@ -39,42 +39,69 @@ def lastRow(idx, workbook, col=1):
 
     return lwr_cell.row
 
+import time
 
 '''MAKE AN XY PLOT FOR A SINGLE EXCEL FILE (SPECIFY FOLDER PATH AND FILE NAME)'''
-def readxl(path,file):
+def readxl(path,file,sheet='Sheet1'):
 
     book = xw.Book(path+file)
     
-    x=book.sheets['Sheet1'].range('A1:A'+str(lastRow('Sheet1',book))).value
-    y=book.sheets['Sheet1'].range('B1:B'+str(lastRow('Sheet1',book))).value
+    x=book.sheets[sheet].range('A1:A'+str(lastRow(sheet,book))).value
+    y=book.sheets[sheet].range('B1:B'+str(lastRow(sheet,book))).value
+    pltitle=book.sheets[sheet].range('I1').value
+#    y=(y-np.min(y))*627.509
     book.close()
     plt.figure()
     plt.plot(x,y)
-    plt.title(file[:-5])
-    plt.xlabel('time')
-    plt.savefig(file+'.png')
+#    plt.xlim(4,1.7)
+    plt.title(pltitle)
+#    plt.xlabel('')
+#    print(end)
+    plt.savefig(str(int(time.time())))
     
     
 '''MAKE AN XY PLOT WITH TWO INDEPENDENT VARS (Y AND Z) FOR A SINGLE EXCEL FILE
   (SPECIFY FOLDER PATH AND FILE NAME)'''
-def readxl2(path,file):
+def readxl2(path,file,sheet='Sheet1'):
 
     book = xw.Book(path+file)
     
-    x=book.sheets['Sheet1'].range('A1:A'+str(lastRow('Sheet1',book))).value
-    y=book.sheets['Sheet1'].range('B1:B'+str(lastRow('Sheet1',book))).value
-    z=book.sheets['Sheet1'].range('C1:C'+str(lastRow('Sheet1',book))).value
-
+    x=book.sheets[sheet].range('A1:A'+str(lastRow(sheet,book))).value
+    y=book.sheets[sheet].range('B1:B'+str(lastRow(sheet,book))).value
+    z=book.sheets[sheet].range('C1:C'+str(lastRow(sheet,book))).value
+    pltitle = book.sheets[sheet].range('I1').value
+    label1 = book.sheets[sheet].range('I2').value
+    label2 = book.sheets[sheet].range('I3').value
     book.close()
     plt.figure()
-    plt.plot(x,y,label = r'y')
-    plt.plot(x,z,label = r'z')
+    plt.plot(x,y,label = label1)
+    plt.plot(x,z,label = label2)
 
-    plt.title(file[:-5])
+    plt.title(pltitle)
     plt.xlabel('time')
     plt.savefig(file+'.png')
     plt.legend()
 
+def readxlCG(path,file,sheet='Sheet1'):
+
+    book = xw.Book(path+file)
+    
+    x=book.sheets[sheet].range('B2:B'+str(lastRow(sheet,book))).value
+    y=book.sheets[sheet].range('D2:D'+str(lastRow(sheet,book))).value
+    x2=book.sheets[sheet].range('F2:F'+str(lastRow(sheet,book))).value
+    y2=book.sheets[sheet].range('H2:H'+str(lastRow(sheet,book))).value
+#    pltitle = book.sheets[sheet].range('I1').value
+#    label1 = book.sheets[sheet].range('I2').value
+#    label2 = book.sheets[sheet].range('I3').value
+    book.close()
+    plt.figure()
+    plt.plot(x,y,'o',label = 'no CG')
+    plt.plot(x2,y2,'o',label = 'CG')
+
+#    plt.title(pltitle)
+#    plt.xlabel('time')
+#    plt.savefig(file+'.png')
+    plt.legend()
 
 
 'MAKE XY PLOTS FOR ALL TAB DELIMITED FILES IN A FOLDER (SPECIFY FOLDER PATH)'
@@ -115,8 +142,8 @@ def writetab_bulk(path):
 '''COMMAND SECTION (INPUT)'''
 
 'MAKE XY PLOTS FOR ALL TAB DELIMITED FILES IN A FOLDER (SPECIFY FOLDER PATH)'
-path = r'C:\Users\***\file_folder/'
-df=writetab_bulk(path)
+#path = r'C:\Users\***\file_folder/'
+#df=writetab_bulk(path)
 
 '''MAKE AN XY PLOT FOR A SINGLE EXCEL FILE (SPECIFY FOLDER PATH AND FILE NAME)'''
 #path = r'C:\Users\***\file_folder/'
